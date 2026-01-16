@@ -72,22 +72,7 @@ cd <OPA_HOME>
 ./bin/start.sh
 ```
 
-### 4. Create a Connection in Workato
-
-In your Workato workspace:
-
-1. Navigate to **Connections** and click **Create**
-2. Fill in the connection details:
-   - **Connection name**: Choose a descriptive name (e.g., "Test Webhook")
-   - **Connection type**: Select your OPA group (e.g., "Work MBP")
-   - **Profile**: Enter `webhook`
-   - **Connection ID**: Enter a unique identifier (e.g., `dev`)
-   - **Listen port**: Enter the port for the HTTP listener (e.g., `8080`)
-3. Click **Connect**
-
-![Webhook Connection Setup](resource/connection.jpg)
-
-### 5. Create a Custom Connector
+### 4. Create a Custom Connector
 
 The project includes a custom connector definition for Workato. Follow these steps to set it up:
 
@@ -104,9 +89,24 @@ The project includes a custom connector definition for Workato. Follow these ste
    - **Connector code**: Copy and paste the contents of `workato-sdk/connector.rb`
    - **Save** and **release latest version** to your workspace.
 
-4. **Test the connector** by creating a recipe that uses it
+### 5. Create a Connection in Workato
 
-### 6. Test the Connection
+In your Workato workspace:
+
+1. Navigate to **Connections** and click **Create**
+2. Fill in the connection details:
+   - **Connection name**: Choose a descriptive name (e.g., "Test Webhook")
+   - **Connection type**: Select your OPA group (e.g., "Work MBP")
+   - **Profile**: Enter `webhook`
+   - **Connection ID**: Enter a unique identifier (e.g., `dev`)
+   - **Listen port**: Enter the port for the HTTP listener (e.g., `8080`)
+3. Click **Connect**
+
+![Webhook Connection Setup](resource/connection.jpg)
+
+### 6. **Test the connector** by creating a recipe that uses it
+
+### 7. Test the Connection
 
 Test the webhook endpoint using curl:
 
