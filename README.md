@@ -123,20 +123,6 @@ curl -X POST http://localhost:8080/<connection-id> \
 
 Replace `<connection-id>` with the Connection ID you specified (e.g., `dev`).
 
-## Project Structure
-
-```
-.
-├── opa-extension/           # Java Spring Boot OPA Extension
-│   ├── src/
-│   ├── pom.xml             # Maven configuration
-│   └── build.gradle        # Gradle configuration
-├── workato-sdk/
-│   └── connector.rb        # Workato Custom Connector Definition
-├── README.md               # This file
-└── LICENSE                 # MIT License
-```
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
