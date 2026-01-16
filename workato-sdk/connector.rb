@@ -22,7 +22,7 @@
         type: 'string',
         optional: true,
         default: '8080',
-        hint: 'Port number where the HTTP listener will accept requests (configured in OPA config.yml)'
+        hint: 'Port number where the HTTP listener will accept requests'
       }
     ],
     authorization: {
@@ -99,17 +99,16 @@
       end,
 
       webhook_notification: lambda do |input, payload, extended_input_schema, extended_output_schema, headers, params|
-        # Return payload with __event_id__ for deduplication
-        # Extension generates X-Workato-Event-Id header which we extract here
-        payload.merge({
-          '__event_id__' => headers['X-Workato-Event-Id'] || headers['x-workato-event-id']
-        })
+      # Return a hash with the specified structure
+      {
+        "webhook_event_id" => headers['X-Workato-Event-Id'] || headers['x-workato-event-id'],
+        "webhook_payload" => payload
+      }
       end,
 
-      dedup: lambda do |record|
-        # Use unique event ID from extension's X-Workato-Event-Id header for deduplication
-        # This ensures each HTTP request triggers the recipe exactly once
-        record['__event_id__']
+      dedup: lambda do |payload|
+      # Use the 'X-Workato-Event-Id' header for deduplication
+       "#{payload['webhook_event_id']}-#{Time.now.to_f}"
       end,
 
       webhook_unsubscribe: lambda do |webhook_subscribe_output, connection|
@@ -135,7 +134,7 @@
           customer_email: 'customer@example.com',
           amount: 99.99,
           timestamp: 1768544318
-        }
+        }.to_json
       end
     }
   },
