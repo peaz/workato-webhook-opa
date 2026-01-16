@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'application'
+}
+
+sourceCompatibility = 17
+targetCompatibility = 17
+version = '0.2'
+
+project.ext {
+    springVersion = '6.0.9'
+    slf4jVersion = '2.0.6'
+    jacksonVersion = '2.15.1'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    implementation "org.slf4j:jcl-over-slf4j:${slf4jVersion}"
+    implementation "org.slf4j:jul-to-slf4j:${slf4jVersion}"
+    implementation "org.slf4j:log4j-over-slf4j:${slf4jVersion}"
+
+    implementation "jakarta.servlet:jakarta.servlet-api:6.0.0"
+    implementation "jakarta.websocket:jakarta.websocket-api:2.1.0"
+    implementation "jakarta.validation:jakarta.validation-api:3.0.2"
+    implementation "jakarta.inject:jakarta.inject-api:2.0.1"
+
+    implementation "org.springframework:spring-context:${springVersion}"
+    implementation "org.springframework:spring-jdbc:${springVersion}"
+    implementation "org.springframework:spring-jms:${springVersion}"
+    implementation "org.springframework:spring-webmvc:${springVersion}"
+
+    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${jacksonVersion}"
+
+    // JSON library
+    implementation "org.codehaus.jettison:jettison:1.5.3"
+
+    implementation "commons-io:commons-io:2.11.0"
+    implementation "commons-codec:commons-codec:1.15"
+    implementation "net.sf.jopt-simple:jopt-simple:5.0.3"
+    implementation "org.apache.commons:commons-lang3:3.12.0"
+    implementation "org.apache.commons:commons-collections4:4.4"
+    implementation "org.apache.httpcomponents:httpclient:4.5.14"
+}
+
