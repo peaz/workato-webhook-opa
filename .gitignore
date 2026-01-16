@@ -1,2 +1,4 @@
-opa-extension/.gradle
 .DS_Store
+.vscode
+opa-extension/.gradle
+opa-extension/deploy.sh
