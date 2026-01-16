@@ -87,7 +87,26 @@ In your Workato workspace:
 
 ![Webhook Connection Setup](resource/connection.jpg)
 
-### 5. Test the Connection
+### 5. Create a Custom Connector
+
+The project includes a custom connector definition for Workato. Follow these steps to set it up:
+
+1. **Copy the connector file** to your Workato SDK directory:
+   ```bash
+   cp workato-sdk/connector.rb <WORKATO_SDK_HOME>/lib/workato/connector_sdk/
+   ```
+
+2. **In your Workato workspace**, navigate to **Tools -> Connector SDK** and click **New connector**
+
+3. **Configure the connector**:
+   - **Choose a starting point**: Select "Get guided from a Workato template"
+   - **Add connector details**: Choose a descriptive name (e.g., "Webhook Proxy Connector") and (optionally) add a logo if you wish.
+   - **Connector code**: Copy and paste the contents of `workato-sdk/connector.rb`
+   - **Save** and **release latest version** to your workspace.
+
+4. **Test the connector** by creating a recipe that uses it
+
+### 6. Test the Connection
 
 Test the webhook endpoint using curl:
 
@@ -103,6 +122,20 @@ curl -X POST http://localhost:8080/<connection-id> \
 ```
 
 Replace `<connection-id>` with the Connection ID you specified (e.g., `dev`).
+
+## Project Structure
+
+```
+.
+├── opa-extension/           # Java Spring Boot OPA Extension
+│   ├── src/
+│   ├── pom.xml             # Maven configuration
+│   └── build.gradle        # Gradle configuration
+├── workato-sdk/
+│   └── connector.rb        # Workato Custom Connector Definition
+├── README.md               # This file
+└── LICENSE                 # MIT License
+```
 
 ## License
 
