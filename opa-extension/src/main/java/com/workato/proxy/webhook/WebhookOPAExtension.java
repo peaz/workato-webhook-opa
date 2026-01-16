@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.springframework.context.Lifecycle;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.PropertySource;
 import org.springframework.http.MediaType;
@@ -37,7 +38,7 @@ import com.sun.net.httpserver.HttpServer;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class WebhookOPAExtension {
+public class WebhookOPAExtension implements Lifecycle {
 
 	private static final Logger logger = Logger.getLogger(WebhookOPAExtension.class.getName());
 	
@@ -418,5 +419,25 @@ public class WebhookOPAExtension {
 		} finally {
 			connection.disconnect();
 		}
+	}
+
+	@Override
+	public void start() {
+		logger.info("Starting WebhookOPAExtension Lifecycle");
+		// HTTP listener is started in constructor
+	}
+
+	@Override
+	public void stop() {
+		logger.info("Stopping WebhookOPAExtension Lifecycle");
+		if (httpServer != null) {
+			httpServer.stop(0);
+			logger.info("HTTP listener stopped");
+		}
+	}
+
+	@Override
+	public boolean isRunning() {
+		return httpServer != null;
 	}
 }
