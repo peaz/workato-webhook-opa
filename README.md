@@ -103,3 +103,9 @@ curl -X POST http://localhost:8080/<connection-id> \
 ```
 
 Replace `<connection-id>` with the Connection ID you specified (e.g., `dev`).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**Disclaimer**: Users are responsible for their own use of this software. The authors and contributors are not liable for any damages or issues arising from the use of this software.
