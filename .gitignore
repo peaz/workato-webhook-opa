@@ -1,4 +1,17 @@
+# Operating System files
 .DS_Store
-.vscode
+.DS_Store?
+.Spotlight-V100
+
+# IDE files
+.vscode/
 opa-extension/.gradle
 opa-extension/deploy.sh
+opa-extension/.DS_Store
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
